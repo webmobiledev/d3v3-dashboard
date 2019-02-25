@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>D3v3 Dashboard</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/default.css">
+    </head>
+    <body>
+        <div class="container-fluid my-5">
+            <h2 class="text-center">D3v3 Dashboard</h2>
+            <div class="row">
+                <div class="col-lg-6 col-12 mb-3">
+                    <div class="card">
+                        <div class="card-header">US Map Chart</div>
+                        <div class="card-body">
+                            <div id="choropleth"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-12 mb-3">
+                    <div class="card">
+                        <div class="card-header d-flex align-items-center justify-content-between">
+                            <h6 class="m-0">Heatmap Chart</h6>
+                            <div class="form-inline">
+                                <label for="house">House</label>
+                                <select value="Gryffindor" id="house" onchange="drawHeatMap(event.target.value);" class="form-control-sm ml-2">
+                                    <option>Gryffindor</option>
+                                    <option>Hufflepuff</option>
+                                    <option>Ravenclaw</option>
+                                    <option>Slytherin</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div id="heatmap"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-12 mb-3">
+                    <div class="card">
+                        <div class="card-header">Mbostock 1 Chart</div>
+                        <div class="card-body">
+                            <div id="mbostock1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-12 mb-3">
+                    <div class="card">
+                        <div class="card-header">Mbostock 2 Chart</div>
+                        <div class="card-body">
+                            <div id="mbostock2"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-12 mb-3">
+                    <div class="card">
+                        <div class="card-header">Tree Chart</div>
+                        <div class="card-body">
+                            <div id="dndTree"></div>
+                            <div id="tree-table-container" class="text-center">
+                                <table class="table table-hover" id="tree-table">
+                                    <tr class="head">
+                                        <td>First Node</td>
+                                        <td>Second Node</td>
+                                        <td>Third Node</td>
+                                        <td>Fourth Node</td>
+                                        <td>Fifth Node</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-12 mb-3">
+                    <div class="card">
+                        <div class="card-header">Bubble Chart</div>
+                        <div class="card-body">
+                            <div id="bubbleChart"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-12 mb-3">
+                    <div class="card">
+                        <div class="card-header">Interactive Bar Chart</div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-9 col-12">
+                                    <div id="interactiveBar"></div>
+                                </div>
+                                <div class="col-lg-3 col-12">
+                                    <div id="interactiveLine"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+        <script src="lib/d3.v3.min.js"></script>
+        <script src="lib/queue.v1.min.js"></script>
+        <script src="lib/topojson.v1.min.js"></script>
+        <script src="lib/d3-legend.min.js"></script>
+        <script src="lib/d3.tip.v0.6.3.js"></script>
+        <script src="lib/dragit.js"></script>
+        <script src="data/data1.js"></script>
+        <script src="data/data2.js"></script>
+        <script src="data/data3.js"></script>
+        <script src="data/nations.js"></script>
+        <script src="js/interactive.js"></script>
+        <script src="js/choropleth.js"></script>
+        <script src="js/heatmap.js"></script>
+        <script src="js/mbostock1.js"></script>
+        <script src="js/mbostock2.js"></script>
+        <script src="js/dndTree.js"></script>
+        <script src="js/dragituse.js"></script>
+
+        <script>
+            window.addEventListener('resize', function() {
+                drawInteractiveChart();
+                drawUSMap();
+                drawHeatMap(d3.select('#house').property('value'));
+                drawMbostock1();
+                drawMbostock2();
+            });
+        </script>
+    </body>
+</html>
